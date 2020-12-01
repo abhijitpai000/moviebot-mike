@@ -1,0 +1,61 @@
+{
+  "intents": [
+    {
+      "intent": "wakeword",
+      "question": ["hi", "hello", "what's up?", "hey", "anybody there?",
+                   "mike", "yo mike", "hello mike", "hi mike", "what's up? mike", "mike you there?",
+                   "unk"],
+      "response": ["hello, how can i help you?", "hey, how can i help you?"]
+    },
+    {
+      "intent": "greeting",
+      "question": ["hi, how are you doing?", "hello, how are you doing?",
+                  "how are you doing?","how is everything?", "all good?",
+                  "unk"],
+      "response": ["all good, how can i help you?", "everything alright, how are you doing?", "what's up?"]
+    },
+    {
+      "intent": "about",
+      "question": ["what are you?", "who are you?", "what do you do?", "tell me about yourself",
+                   "what are your features?", "what can you do?", "what tasks can you perform?",
+                   "unk"],
+      "response": ["i'm mike, i recommend movies based on imdb ratings using ML, say 'recommend movies like <movie-name>'"]
+    },
+    {
+      "intent": "banter",
+      "question": ["do you have friends?", "where are you from?", "what do you do all day?",
+                   "can we date?", "will you be my friend?", "can we be friends"],
+      "response": ["i'm a bot, i'm learning new thing everyday"]
+    },
+    {
+      "intent": "movie_interest",
+      "question": ["what do you like do in your free time?", "what movies do you like?",
+                   "do you watch movies?", "what movies do you watch?", "what are your personal favorites?",
+                   "give me your personal favorites", "what shows do you watch?", "what tv shows do you like?",
+                   "unk"],
+      "response": ["i like watching comedy flicks, try 'recommend comedy movies'"]
+    },
+    {
+      "intent": "invoke_watch_next",
+      "question": ["what should i watch next?", "recommend a movie", "suggest a movie",
+                   "give me a movie recommendation", "what movies should i watch?",
+                   "start watch next", "activate watch next", "watch next",
+                   "invoke watch next", "movies like unk",
+                   "unk"],
+      "response": ["API START"]
+    },
+
+    {
+      "intent": "profanity",
+      "question": ["you're a dick", "you're a pussy", "you're a loser", "dickhead", "fuck you", "screw you",
+                   "you're an asshole", "twat", "motherfucker"],
+      "response": ["that's not a nice thing to say"]
+    },
+    {
+      "intent": "feedback",
+      "question": ["you suck", "you're not good", "you're a loser", "i like you", "i love talking to you",
+                   "you don't know shit", "you're mean", "you're rude"],
+      "response": ["thank you for your feedback, i'll notify my developer"]
+    }
+  ]
+}
