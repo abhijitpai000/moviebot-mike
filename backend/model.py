@@ -1,6 +1,7 @@
 """
 Neural Net for intent classification.
 """
+
 import torch.nn as nn
 
 
