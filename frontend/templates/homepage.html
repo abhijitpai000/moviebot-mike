@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moviebot Mike</title>
+    <!--Stylesheet-->
+    <link href="../static/homepage_style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+    <!--Client-side-->
+    <script>
+    {% include 'homepage_client.js' %}
+    </script>
+    <!--Responsive-->
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chatbox-title">
+            <h4>Mike</h4>
+            <button id="help-button">Help?</button>
+            <a href="{{ url_for('about') }}" style="font-size: medium; float: right;">
+                <button style="padding: 5px; font-size: small; border-radius: 5px; border: none; margin-top: 3px;cursor: pointer;">
+                    How it works?</button>
+            </a>
+            <div id="help-window" class="window">
+                <div class="help-window-content">
+                    <span class="close">&times;</span>
+                    <h3>1. Get Hindi Movie Recommendations</h3>
+                    Mike can give recommendations for about 200 IMDb 7+ rated bollywood movies released in 2010 to 2019.
+                    <br>
+                    <br>
+                        <i>>>movies like 'movie-title'</i>
+                    <br>
+                    <br>
+                    <h3>2. Get movie plot</h3>
+                    <br>
+                        <i>>>about 'movie-title'</i>
+                    <br>
+                    <br>
+                    <b>Try these movie titles - </b>
+                    trapped, gone kesh, karthik calling karthik, my name is khan, english vinglish,
+                    delhi belly, highway, kabir singh, udaan, zindagi na milegi dobara...
+                    <br>
+                    <br>
+                    <h3>3. Easter eggs</h3>
+                    <br>
+                    <p>
+                        <i>>> who are you?</i> 
+                    </p>
+                    <br>
+                    <br>
+                    <h3>4. How bot understands user's request</h3>
+                    <br>
+                    <p>
+                        <li><b>Intent:</b> Intent of the user detected by bot.</li>
+                        <li><b>Confidence:</b> Confidence of the intent detection</li>
+                        <li><b>Unk Percent:</b> Percent of unknown words in user's request (out of vocab words)</li>
+                    </p>
+                </div>
+              </div>
+            
+        </div>
+        <div id="chatbox">
+            <div id="load"></div>
+            <span>
+                <ul>
+                </ul>
+            </span>
+        </div>
+        <div id="chatbox-form-container">
+
+            <form>
+                <input type="text" placeholder="Message">
+                <button type="submit" id="send-button">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
