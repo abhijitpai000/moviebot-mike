@@ -38,3 +38,7 @@ Mike predicts 9 user intents, makes recommendations for about 200 IMDb 7+ rated 
 | **Unk Handler**| Implemented a module to replace out of vocabulary words (words not seen in training) detected in a user request with 'unk' to gain maximum information out of the request, the UNK percent in the bot response refers to that.|
 | **Movie Title Spellings**| To handle variations of movie title spelling, implemented a module that computes Levenstein distance between user input movie title and the ones in the database to capture appropriate movie title given by the user.|
 | **Profanity Handler**| Implemented an intent that tries to detect swear words in a user's request. |
+
+
+## Model Training
+The model training part of the projects is in the [moviebot-mike-training](https://github.com/abhijitpai000/moviebot-mike-training) repository.
