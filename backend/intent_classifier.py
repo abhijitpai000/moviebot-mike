@@ -4,12 +4,13 @@ Takes user input and classifies intent for further action.
 """
 import torch
 import numpy as np
-import json
+import nltk
+nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 
 # Local Imports.
-from backend.model import NeuralNet
 from backend.config import parameters_path
+from backend.model import NeuralNet
 
 
 def process_user_input(user_input, vocab, word_to_idx):
@@ -24,7 +25,7 @@ def process_user_input(user_input, vocab, word_to_idx):
 
     Returns
     ------
-        bow_vec, unk_percent.
+        user_input_tokens, bow_vec, unk_percent.
     """
     user_input_tokens = word_tokenize(user_input)
     user_input_tokens = [w.lower() for w in user_input_tokens]
@@ -40,8 +41,8 @@ def process_user_input(user_input, vocab, word_to_idx):
         else:
             bow_vec[word_to_idx[word]] += 1
 
-    unk_percent = unk_counter / len(user_input_tokens)
-    return bow_vec, unk_percent
+    unk_percent = round(100*(unk_counter / len(user_input_tokens)),2)
+    return user_input_tokens, bow_vec, unk_percent
 
 
 def classify_user_input(user_input):
@@ -73,9 +74,9 @@ def classify_user_input(user_input):
     model.load_state_dict(model_state)
     model.eval()
 
-    bow_vec, unk_percent = process_user_input(user_input=user_input,
-                                              vocab=vocab,
-                                              word_to_idx=word_to_idx)
+    user_input_tokens, bow_vec, unk_percent = process_user_input(user_input=user_input,
+                                                                 vocab=vocab,
+                                                                 word_to_idx=word_to_idx)
 
     bow_vec = bow_vec.reshape(1, bow_vec.shape[0])
     bow_vec = torch.from_numpy(bow_vec)
@@ -88,12 +89,5 @@ def classify_user_input(user_input):
     # confidence.
     probabilities = torch.softmax(out, dim=1)
     confidence = probabilities[0][predicted_idx.item()].item()
-    confidence = round(confidence*100, 2)
-    return intent_detected, confidence
-
-
-
-
-
-
-
+    confidence = round(confidence * 100, 2)
+    return user_input_tokens, intent_detected, confidence, unk_percent
