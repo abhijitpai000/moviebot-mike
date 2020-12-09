@@ -29,13 +29,27 @@ class Chat(BaseModel):
 
 
 @app.post("/chat")
-def item_rec(chat: Chat):
+def chat_with_bot(chat: Chat):
     """
-    Generates similar products using input in the 'Find Similar Products' section.
+    Generates Bot Responses.
     """
     user_input = chat.user_input
-    user_input_tokens, intent_detected, confidence = classify_user_input(user_input=user_input)
-    response = response_handler(intent_detected=intent_detected, user_input_tokens=user_input_tokens)
+    user_input_tokens, intent_detected, confidence, unk_percent = classify_user_input(user_input=user_input)
+
+    response = response_handler(intent_detected=intent_detected,
+                                user_input_tokens=user_input_tokens,
+                                confidence=confidence,
+                                unk_percent=unk_percent)
     return {
         "bot_response": response
     }
+
+
+@app.get("/about")
+def about(request: Request):
+    """
+    Displays About page.
+    """
+    return templates.TemplateResponse("about.html", {
+        "request": request
+    })
